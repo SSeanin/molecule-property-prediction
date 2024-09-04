@@ -72,6 +72,7 @@ def run(model, model_name, train_loader, val_loader, test_loader, std, n_epochs=
             # Evaluate model on test set if validation metric improves
             test_error = eval(model, test_loader, device, std)
             best_val_error = val_error
+            torch.save(model.state_dict(), 'best-model-parameters.pt')
 
         if epoch % 10 == 0:
             # Print and track stats every 10 epochs
