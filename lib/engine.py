@@ -9,7 +9,7 @@ def train(model, train_loader, optimizer, device):
     model.train()
     loss_all = 0
 
-    for data in train_loader:
+    for data in tqdm(train_loader):
         data = data.to(device)
         optimizer.zero_grad()
         y_pred = model(data)
@@ -24,7 +24,7 @@ def eval(model, loader, device, std):
     model.eval()
     error = 0
 
-    for data in loader:
+    for data in tqdm(loader):
         data = data.to(device)
         with torch.no_grad():
             y_pred = model(data)
